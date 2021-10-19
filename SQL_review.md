@@ -92,12 +92,13 @@ SELECT *, RANK() OVER (PARTITION BY cid ORDER BY grade) FROM enrolled
 WHERE ranking.rank=1
 ```
 
--- same as above, but also output name
+-- same as above, but also output name, cid, and grade
 ```
-SELECT * FROM 
+SELECT s.name, ranking.cid, ranking.grade FROM 
 (
 SELECT *, RANK() OVER (PARTITION BY cid ORDER BY grade) FROM enrolled
 ) AS ranking
+--WHERE ranking.rank=1
 JOIN student s
 ON s.sid=ranking.sid
 AND ranking.rank=1
