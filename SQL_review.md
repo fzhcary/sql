@@ -115,9 +115,9 @@ AND ranking.rank=1
 
 - CTE (common table expressions ): a way to write auxiliary statements for use in a larger query. ex
 ```
-WITH ctename AS (
-    SELECT 1
-    )
-SELECT * FROM cteName
+WITH temp (col1, col2) AS (
+  SELECT 1, 2
+  )
+  SELECT col1 + col2 FROM temp;
 ```
--- the select statement after the cte can refer to table cteName as if it exists
+-- the select statement after the cte can refer to table as if it exists
