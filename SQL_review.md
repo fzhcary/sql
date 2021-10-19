@@ -128,8 +128,8 @@ WITH RECURSIVE temp ( counter ) AS (
     (SELECT 1)
     UNION ALL
     (SELECT counter + 1 FROM temp
-     WHERE counter < 10)
+     WHERE counter < 3)
   )
   SELECT * FROM temp
 ```
--- this will produce 10 rows, with rows have value from 1 to 10
+-- this will produce 3 rows, with rows have value from 1 to 3. first execution is 1 row with 1, 2nd is add 1 to counter 1, produce row with 2 then union the 1, so row 1 and 2. 3nd time, first have two rows of 1, 2, add 1 to each row becomes 2, 3 and unionall with 1, so final output is 1,2,3
