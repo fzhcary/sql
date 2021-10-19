@@ -82,3 +82,23 @@ SELECT RANK() OVER ( ORDER BY sid) FROM enrolled
 SELECT DENSE_RANK() OVER ( ORDER BY sid) FROM enrolled
 -- output 1,2,2,3,3 , has duplicates, numbers are consecutive
 ```
+
+- find student with highest grade for each course
+```
+SELECT * FROM 
+(
+SELECT *, RANK() OVER (PARTITION BY cid ORDER BY grade) FROM enrolled
+) AS ranking
+WHERE ranking.rank=1
+```
+
+-- same as above, but also output name
+```
+SELECT * FROM 
+(
+SELECT *, RANK() OVER (PARTITION BY cid ORDER BY grade) FROM enrolled
+) AS ranking
+JOIN student s
+ON s.sid=ranking.sid
+AND ranking.rank=1
+```
