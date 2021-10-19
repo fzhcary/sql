@@ -113,4 +113,11 @@ ON s.sid=ranking.sid
 AND ranking.rank=1
 ```
 
-- CTE (common table expressions )
+- CTE (common table expressions ): a way to write auxiliary statements for use in a larger query. ex
+```
+WITH ctename AS (
+    SELECT 1
+    )
+SELECT * FROM cteName
+```
+-- the select statement can refer to table cteName as if it exists
