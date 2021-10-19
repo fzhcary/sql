@@ -1,5 +1,9 @@
+# SQL
+
+## Video Review
 [This](https://www.youtube.com/watch?v=2Fn0WAyZV0E) is nice review of the SQL 
 
+### create tables
 Let's go to sqlfiddle.com and use "Text to DDL" to paste a csv text, with the header as the first row and build the schema by click the button. 
 Once you create one table, you can append another one and build schema again. In the end you get something like this
 ```
@@ -46,10 +50,11 @@ VALUES
 
 ```
 
+### pratice problems
+
 With these tables, you can practice sql. I like to use postgres 9.6 engine.
 
-find student record with the highest id that is enrolled
-in at least one course
+- find student record with the highest id that is enrolled in at least one course
 ```
 SELECT sid, name
 FROM student S
@@ -58,9 +63,7 @@ WHERE sid=
 FROM enrolled e)
 ```
 
-
--- you can refer outer query from inner query.
-find all courses that has no students enrolled in it
+- find all courses that has no students enrolled in it (you can refer outer query from inner query.)
 ```
 SELECT *
 FROM course c
