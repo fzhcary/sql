@@ -120,4 +120,4 @@ WITH ctename AS (
     )
 SELECT * FROM cteName
 ```
--- the select statement can refer to table cteName as if it exists
+-- the select statement after the cte can refer to table cteName as if it exists
