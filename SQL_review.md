@@ -50,17 +50,21 @@ With these tables, you can practice sql. I like to use postgres 9.6 engine.
 
 find student record with the highest id that is enrolled
 in at least one course
-```SELECT sid, name
+```
+SELECT sid, name
 FROM student S
 WHERE sid=
 (SELECT MAX(e.sid)
-FROM enrolled e)```
+FROM enrolled e)
+```
 
 
 -- you can refer outer query from inner query.
 find all courses that has no students enrolled in it
-```SELECT *
+```
+SELECT *
 FROM course c
 WHERE NOT EXISTS
-(SELECT cid FROM enrolled e WHERE e.cid=c.cid)```
+(SELECT cid FROM enrolled e WHERE e.cid=c.cid)
+```
 
