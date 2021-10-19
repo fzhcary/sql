@@ -79,8 +79,10 @@ SELECT cid, sid, ROW_NUMBER() OVER ( PARTITION BY cid ORDER BY sid) FROM enrolle
 -- row number reset after each partition
 SELECT RANK() OVER ( ORDER BY sid) FROM enrolled
 -- output 1, 2, 2, 4, 4. has duplicates, numbers are not consecutive
+-- the difference between ROW_NUMBER and RANK() is that rank has tie, row number doesn't produce tie.
 SELECT DENSE_RANK() OVER ( ORDER BY sid) FROM enrolled
 -- output 1,2,2,3,3 , has duplicates, numbers are consecutive
+-- the difference between rank and dense_rank is that rank is not consecutive after a tie. dense_rank is.
 ```
 
 - find student with highest grade for each course
@@ -92,7 +94,7 @@ SELECT *, RANK() OVER (PARTITION BY cid ORDER BY grade) FROM enrolled
 WHERE ranking.rank=1
 ```
 
--- same as above, but also output name, cid, and grade
+- same as above, but also output name, cid, and grade
 ```
 SELECT s.name, ranking.cid, ranking.grade FROM 
 (
@@ -103,3 +105,5 @@ JOIN student s
 ON s.sid=ranking.sid
 AND ranking.rank=1
 ```
+
+- CTE (common table expressions )
