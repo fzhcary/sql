@@ -71,3 +71,14 @@ WHERE NOT EXISTS
 (SELECT cid FROM enrolled e WHERE e.cid=c.cid)
 ```
 
+- window functions
+```
+SELECT cid, sid, ROW_NUMBER() OVER ( ORDER BY sid) FROM enrolled
+-- row number is the rank by sid start from 1. no duplicates
+SELECT cid, sid, ROW_NUMBER() OVER ( PARTITION BY cid ORDER BY sid) FROM enrolled
+-- row number reset after each partition
+SELECT RANK() OVER ( ORDER BY sid) FROM enrolled
+-- output 1, 2, 2, 4, 4. has duplicates, numbers are not consecutive
+SELECT DENSE_RANK() OVER ( ORDER BY sid) FROM enrolled
+-- output 1,2,2,3,3 , has duplicates, numbers are consecutive
+```
