@@ -121,3 +121,15 @@ WITH temp (col1, col2) AS (
   SELECT col1 + col2 FROM temp;
 ```
 -- the select statement after the cte can refer to table as if it exists
+
+-- difference between CTE and nest query is that CTE can do recursion. ex
+```
+WITH RECURSIVE temp ( counter ) AS (
+    (SELECT 1)
+    UNION ALL
+    (SELECT counter + 1 FROM temp
+     WHERE counter < 10)
+  )
+  SELECT * FROM temp
+```
+-- this will produce 10 rows, with rows have value from 1 to 10
