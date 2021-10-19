@@ -3,6 +3,13 @@
 ## Video Review
 [This](https://www.youtube.com/watch?v=2Fn0WAyZV0E) is nice review of the SQL 
 
+- Important rule: output of other columns outside of an aggregate is undefined. ex.
+```
+SELECT AVG(s.gpa), e.cid
+FROM enrolled AS e, student AS s
+WHERE e.sid=s.sid
+```
+
 ### create tables
 Let's go to sqlfiddle.com and use "Text to DDL" to paste a csv text, with the header as the first row and build the schema by click the button. 
 Once you create one table, you can append another one and build schema again. In the end you get something like this
