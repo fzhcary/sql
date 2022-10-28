@@ -9,6 +9,20 @@ SELECT AVG(s.gpa), e.cid
 FROM enrolled AS e, student AS s
 WHERE e.sid=s.sid
 ```
+## rollup
+you can use rollup in group by clause to aggregate along the dimensions. so you can see the rollup values in addition.
+
+```
+SELECT cr.country_name, cr.region_name, count(e.*)
+FROM employees e
+JOIN company_regions cr
+ON e.region_id = cr.id
+GROUP BY rollup(cr.country_name, cr.region_name)
+ORDER BY cr.country_name, cr.region_Name
+```
+
+
+
 
 ### create tables
 Let's go to sqlfiddle.com and use "Text to DDL" to paste a csv text, with the header as the first row and build the schema by click the button. 
