@@ -9,8 +9,12 @@ SELECT AVG(s.gpa), e.cid
 FROM enrolled AS e, student AS s
 WHERE e.sid=s.sid
 ```
-## rollup
+## tips
 you can use rollup in group by clause to aggregate along the dimensions. so you can see the rollup values in addition.
+cube is similar.
+There is only one major difference between the functionality of the ROLLUP operator and the CUBE operator. ROLLUP operator generates aggregated results for the selected columns in a hierarchical way. On the other hand, CUBE generates a aggregated result that contains all the possible combinations for the selected columns.
+
+you can use transaction and rollback if you are not sure about delete
 
 ```
 SELECT cr.country_name, cr.region_name, count(e.*)
